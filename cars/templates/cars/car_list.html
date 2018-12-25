@@ -1,0 +1,19 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>My Classic Car Wish-list</h1>
+<div class="container">
+{% for object in object_list  %}
+    {% if img %}
+    <img src="{{ object.car_image.url }}">
+    {% endif %}
+    <p>{{ object.car_year }} {{ object.car_make }} {{ object.car_name }}</p>
+{% endfor %}
+</div>
+</body>
+</html>
