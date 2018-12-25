@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% if messages %}
+    <div class="messages">
+    <ul>
+    {% for message in messages %}
+        <li class="{{ message.tag }}">
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    </div>
+{% endif %}
 <body>
+{% if object_list %}
+    <h1>Recent Paste</h1>
+{% for object in object_list %}
+
+    <h3><a href="{% url 'pastebin_paste_detail' object.id %}" >{{ object.name }}</a></h3>
+
+{% endfor %}
+    {% else %}
+    <h1>No Recent Post</h1>
+{% endif %}
+<div>
+    <a href="{% url 'pastebin_paste_create' %}">Create new</a>
+    </div>
 
 </body>
 </html>

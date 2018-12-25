@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% if messages %}
+    <div class="messages">
+<ul>
+{% for message in messages %}
+        <li class="{{ message.tag }}">
+    {{ message }}
+    </li>
+    {% endfor %}
+    </ul>
+    </div>
+{% endif %}
 
-</body>
-</html>
+
+
+<label>Paste Details: </label>
+<p>
+    <div>
+        <label>ID</label>
+        <span>{{ object.id }}</span>
+    </div>
+    <div>
+        <label>Name</label>
+        <span>{{ object.name }}</span>
+    </div>
+    <div>
+        <label>Text</label>
+        <span>{{ object.text }}</span>
+    </div>
+    <div>
+        <label>Created</label>
+        <span>{{ object.created_on }}</span>
+    </div>
+    <div>
+        <label>Modified</label>
+        <span>{{ object.updated_on }}</span>
+    </div>
+</p>
+
+<h2> Actions</h2>
+<ul>
+    <li>
+        <a href="{% url 'pastebin_paste_update' paste.id %}">Edit</a>
+    </li>
+    <li>
+        <a href="{% url 'pastebin_paste_delete' paste.id %}">Delete</a>
+    </li>
+</ul>
+
+<a href="{% url 'pastebin_paste_list' %}">View all</a>
